@@ -1,5 +1,5 @@
 class cassandra {
-  apt::key{'apache-cassandra':
+  apt_key{'apache-cassandra':
     ensure => 'present',
     id     => '2B5C1B00',
     source => 'https://www.apache.org/dist/cassandra/debian/dists/20x/Release.gpg',
