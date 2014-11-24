@@ -10,7 +10,7 @@ class cassandra {
     location   => 'http://mirrors.sonic.net/apache/cassandra/debian',
     release    => '20x',
     repos      => 'main',
-    require    => Apt::Key['apache-cassandra'],
+    require    => Apt_key['apache-cassandra'],
   }
 
   package { 'cassandra':
