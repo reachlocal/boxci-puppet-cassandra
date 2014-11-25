@@ -1,7 +1,7 @@
 class cassandra {
   apt::key{'apache-cassandra':
     key         => '2B5C1B00',
-    key_source  => 'https://www.apache.org/dist/cassandra/debian/dists/20x/Release.gpg',
+    key_source  => 'puppet:///modules/cassandra/apache-cassandra-release.gpg',
   }
 
   apt::source { 'apache-cassandra':
