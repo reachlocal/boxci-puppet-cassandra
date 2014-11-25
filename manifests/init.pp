@@ -1,12 +1,10 @@
 class cassandra {
   apt::key{'apache-cassandra':
-    ensure => 'present',
-    id     => '2B5C1B00',
-    source => 'https://www.apache.org/dist/cassandra/debian/dists/20x/Release.gpg',
+    key         => '2B5C1B00',
+    key_source  => 'https://www.apache.org/dist/cassandra/debian/dists/20x/Release.gpg',
   }
 
   apt::source { 'apache-cassandra':
-#    key        => '2B5C1B00',
     location   => 'http://mirrors.sonic.net/apache/cassandra/debian',
     release    => '20x',
     repos      => 'main',
