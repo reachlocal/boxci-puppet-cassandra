@@ -10,6 +10,7 @@ class cassandra {
   package { 'cassandra':
     ensure  => present,
     require => Apt::Source['apache-cassandra'],
+    install_options => ['--force-yes'],
   }
 
   file { "cassandra.yml":
