@@ -1,10 +1,18 @@
 class cassandra {
+  file{'/tmp/apache-cassandra-release.gpg':
+    source  => 'puppet:///modules/cassandra/apache-cassandra-release.gpg',
+  }
+  apt::key{'apache-cassandra':
+    key         => '2B5C1B00',
+    key_source  => '/tmp/apache-cassandra-release.gpg',
+    require     => File['/tmp/apache-cassandra-release.gpg'],
+  }
+
   apt::source { 'apache-cassandra':
-    key        => '2B5C1B00',
-    key_server => 'pgp.mit.edu',
     location   => 'http://mirrors.sonic.net/apache/cassandra/debian',
     release    => '20x',
     repos      => 'main',
+    require    => Apt::Key['apache-cassandra'],
   }
 
   package { 'cassandra':
