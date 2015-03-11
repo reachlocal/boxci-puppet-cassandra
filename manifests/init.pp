@@ -1,7 +1,15 @@
 class cassandra {
-  apt::source { 'apache-cassandra':
-    key        => '2B5C1B00',
+  apt::key { '0353B12C':
     key_server => 'pgp.mit.edu',
+    before     => Apt::Source['apache-cassandra']
+  }
+
+  apt::key { '2B5C1B00':
+    key_server => 'pgp.mit.edu',
+    before     => Apt::Source['apache-cassandra']
+  }
+
+  apt::source { 'apache-cassandra':
     location   => 'http://mirrors.sonic.net/apache/cassandra/debian',
     release    => '20x',
     repos      => 'main',
@@ -10,7 +18,6 @@ class cassandra {
   package { 'cassandra':
     ensure  => present,
     require => Apt::Source['apache-cassandra'],
-    install_options => ['--force-yes'],
   }
 
   file { "cassandra.yml":
