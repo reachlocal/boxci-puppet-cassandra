@@ -1,11 +1,11 @@
 class cassandra {
   apt::key { '0353B12C':
-    key_server => 'pgp.mit.edu',
+    key_server => 'pool.sks-keyservers.net',
     before     => Apt::Source['apache-cassandra']
   }
 
   apt::key { '2B5C1B00':
-    key_server => 'pgp.mit.edu',
+    key_server => 'pool.sks-keyservers.net',
     before     => Apt::Source['apache-cassandra']
   }
 
